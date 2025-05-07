@@ -33,6 +33,10 @@ O projeto **Foundry Smart Contract Lottery** é uma aplicação descentralizada 
 
 ## Descrição
 
+### Endereços de deploy
+
+Sepolia Testnet: [0xa99B3C5A8C41486644767a849971DF94E10c9556](https://sepolia.etherscan.io/address/0xa99b3c5a8c41486644767a849971df94e10c9556)
+
 ### Motivação
 A ideia por trás deste projeto é demonstrar como contratos inteligentes podem ser usados para criar aplicações descentralizadas seguras e transparentes. A loteria é um exemplo clássico que destaca os desafios de geração de números aleatórios e a necessidade de evitar manipulações.
 
