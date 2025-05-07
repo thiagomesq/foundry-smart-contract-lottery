@@ -31,12 +31,14 @@ contract InteractionsTest is Test {
         address vrfCoordinator;
         (config.subscriptionId, vrfCoordinator) =
             createSubscription.createSubscription(config.vrfCoordinator, config.account);
-        (uint96 initialSubscriptionBalance,,,,) = VRFCoordinatorV2_5Mock(vrfCoordinator).getSubscription(config.subscriptionId);
+        (uint96 initialSubscriptionBalance,,,,) =
+            VRFCoordinatorV2_5Mock(vrfCoordinator).getSubscription(config.subscriptionId);
 
         // Fund the subscription
         FundSubscription fundSubscription = new FundSubscription();
         fundSubscription.fundSubscription(vrfCoordinator, config.subscriptionId, config.link, config.account);
-        (uint96 finalSubscriptionBalance,,,,) = VRFCoordinatorV2_5Mock(vrfCoordinator).getSubscription(config.subscriptionId);
+        (uint96 finalSubscriptionBalance,,,,) =
+            VRFCoordinatorV2_5Mock(vrfCoordinator).getSubscription(config.subscriptionId);
 
         // Deploy the Raffle contract
         DeployRaffle deployer = new DeployRaffle();
@@ -45,12 +47,13 @@ contract InteractionsTest is Test {
         // Add consumer to the subscription
         AddConsumer addConsumer = new AddConsumer();
         addConsumer.addConsumer(address(raffle), vrfCoordinator, config.subscriptionId, config.account);
-        (,,,,address[] memory consumers) = VRFCoordinatorV2_5Mock(vrfCoordinator).getSubscription(config.subscriptionId);
+        (,,,, address[] memory consumers) =
+            VRFCoordinatorV2_5Mock(vrfCoordinator).getSubscription(config.subscriptionId);
 
         assert(config.subscriptionId != 0);
         assertEq(vrfCoordinator, config.vrfCoordinator);
         assert(finalSubscriptionBalance == initialSubscriptionBalance + 10 ether);
         assert(consumers.length == 1);
         assert(consumers[0] == address(raffle));
-    } 
+    }
 }
