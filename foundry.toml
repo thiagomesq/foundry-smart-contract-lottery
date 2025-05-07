@@ -1,0 +1,17 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+remappings = [
+    "@chainlink/src/=lib/chainlink-brownie-contracts/contracts/src/v0.8/",
+    "@chainlink/abi/=lib/chainlink-brownie-contracts/contracts/abi/v0.8/",
+    "forge-std/=lib/forge-std/src/",
+    "@solmate/=lib/solmate/src/",
+    "foundry-devops/=lib/foundry-devops/",
+]
+fs_permissions = [
+    { access = "read", path = "./broadcast" },
+    { access = "read", path = "./reports" },
+]
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
